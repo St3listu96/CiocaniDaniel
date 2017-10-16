@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1453419942 source:c:\programe c\matrice_secundara\main.c
+	<stdio.h>
+	<stdlib.h>
+

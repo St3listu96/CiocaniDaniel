@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1466611404 source:c:\programe c\citire_fisier\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

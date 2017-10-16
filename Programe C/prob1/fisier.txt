@@ -1,0 +1,5 @@
+mere 3.5 5
+pere 5.5 25
+struguri 7.0 5
+ananas 6.0 5
+banane 5.0 5

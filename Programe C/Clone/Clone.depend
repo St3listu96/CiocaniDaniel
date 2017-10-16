@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1481202766 source:c:\programe c\clone\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1453301451 source:c:\programe c\matrice_spirala\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

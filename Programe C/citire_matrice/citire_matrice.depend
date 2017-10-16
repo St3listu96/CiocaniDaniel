@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1453069609 source:c:\programe c\citire_matrice\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1453893019 source:c:\programe c\sumrange\main.c
+	<stdio.h>
+	<stdlib.h>
+

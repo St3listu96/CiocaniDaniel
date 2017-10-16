@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1453068612 source:c:\programe c\matrici_parcurgere\main.c
+	<stdio.h>
+	<stdlib.h>
+

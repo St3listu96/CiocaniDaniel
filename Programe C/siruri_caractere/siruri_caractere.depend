@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1456425661 source:c:\programe c\siruri_caractere\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

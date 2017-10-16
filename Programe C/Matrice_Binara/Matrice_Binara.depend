@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1453286291 source:c:\programe c\matrice_binara\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

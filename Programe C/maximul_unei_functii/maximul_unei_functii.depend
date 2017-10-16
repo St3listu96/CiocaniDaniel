@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1466715914 source:c:\programe c\maximul_unei_functii\main.c
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1483968820 source:c:\programe c\random\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+
+1485076187 source:d:\programare\programe c\random\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+

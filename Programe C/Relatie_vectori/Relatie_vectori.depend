@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1458081882 source:c:\programe c\relatie_vectori\main.c
+	<stdio.h>
+	<stdlib.h>
+

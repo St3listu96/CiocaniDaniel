@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1467291027 source:c:\programe c\ordonare_cifre_tablou\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1453403843 source:c:\programe c\eliminare_cifre_nr\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

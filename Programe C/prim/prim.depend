@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1447254099 source:c:\programe c\prim\main.c
+	<stdio.h>
+	<stdlib.h>
+

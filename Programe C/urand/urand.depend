@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1465814366 source:c:\programe c\urand\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1465810883 source:d:\programare\programe c\urand\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+

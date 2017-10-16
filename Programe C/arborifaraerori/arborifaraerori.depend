@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1490739867 source:d:\programare\programe c\arborifaraerori\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

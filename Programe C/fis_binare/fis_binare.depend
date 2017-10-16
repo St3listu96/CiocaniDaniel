@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1465342241 source:c:\programe c\fis_binare\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1465342241 source:d:\programare\programe c\fis_binare\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

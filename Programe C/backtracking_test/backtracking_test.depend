@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1466804338 source:c:\programe c\backtracking_test\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

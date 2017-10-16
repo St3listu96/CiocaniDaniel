@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1452817168 source:c:\programe c\matrice_examen\main.c
+	<stdio.h>
+	<stdlib.h>
+

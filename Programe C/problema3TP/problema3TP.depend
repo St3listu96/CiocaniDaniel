@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1457554741 source:c:\programe c\problema3tp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

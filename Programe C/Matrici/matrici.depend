@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1448570034 source:c:\programe c\matrici\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1466680213 source:c:\programe c\control_wasd\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+

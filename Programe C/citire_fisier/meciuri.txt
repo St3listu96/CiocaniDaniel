@@ -1,0 +1,3 @@
+Romania Albania 0 1
+Croatia Spania 2 1
+Elvetia Romania 1 1 

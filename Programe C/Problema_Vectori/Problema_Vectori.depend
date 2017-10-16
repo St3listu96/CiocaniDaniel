@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1453305806 source:c:\programe c\problema_vectori\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1453197773 source:c:\programe c\exercitiu_biti\main.c
+	<stdio.h>
+	<stdlib.h>
+

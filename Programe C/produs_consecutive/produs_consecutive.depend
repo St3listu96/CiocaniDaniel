@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1453408771 source:c:\programe c\produs_consecutive\main.c
+	<stdio.h>
+	<stdlib.h>
+

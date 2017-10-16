@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1453325591 source:c:\programe c\problema_matrici\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1453327400 source:d:\programare\programe c\problema_matrici\main.c
+	<stdio.h>
+	<stdlib.h>
+

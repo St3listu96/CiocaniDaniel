@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1457513143 source:c:\programe c\problema2tp\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1473982336 source:c:\programe c\proiecttp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+
+1507757360 source:d:\programare\programe c\proiecttp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+
