@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+#include <windows.h>
+#include <string.h>
+#include <conio.h>
+using namespace std;
+
+ifstream fin ("date.in");
+ofstream fout ("date.out");
+
+int main ()
+{
+    int k=0;
+    char text[200], p[]="#";
+    while (getch())
+    {
+        fin.getline(text,200);
+        for (int i=0 ; i<strlen (text) ; i++)
+        {
+            k++;
+            if (k%3==0)
+            getch();
+
+            cout<<text[i];
+        }
+        cout<<endl;
+    }
+}

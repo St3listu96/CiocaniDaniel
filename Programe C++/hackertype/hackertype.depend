@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1465426365 source:c:\programe c++\hackertype\main.cpp
+	<iostream>
+	<fstream>
+	<windows.h>
+	<string.h>
+	<conio.h>
+

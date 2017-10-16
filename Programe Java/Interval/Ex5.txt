@@ -1,0 +1,119 @@
+import java.io.*;
+
+
+class Interval {
+
+  private int limitI;
+  private int limitS;
+  private Double nrTotaltestate = 0.0;
+  private Double nrContinute = 0.0;
+  
+  public Interval(int lI, int lS) 
+  {    
+      this.limitI = lI;
+      this.limitS = lS;
+    }
+
+  public void testarenr(Double d) 
+  {
+     nrTotaltestate++;
+     if(d >= limitI && d <= limitS)
+     nrContinute++;
+  }
+  
+  private double Procent()
+  {
+      return nrContinute/nrTotaltestate;
+  }
+  
+  public void tipareste(PrintStream out)
+  {
+      out.println("Intervalul [" + limitI + "," + limitS + "] are procentul: " + Procent()*100);
+  }
+  
+  
+}
+
+class ClientInterval {
+
+  public static void main(String[] args)
+  {
+      Interval interv[] = new Interval[100];
+      String numefisier;
+      String linie;
+      int nrIntervale;
+      int nrFisiere;
+      String limitI;
+      String limitS;
+      Double numere[] = new Double[100];
+      int i=0, j=0;
+  
+	  try {
+		System.out.print("Nume fisier intervale: ");
+		numefisier = System.console().readLine();
+    
+		BufferedReader in_stream_char = 
+		  new BufferedReader( new InputStreamReader(new FileInputStream(numefisier)));
+	
+		PrintStream output;
+		      if(args.length > 0){
+			   output = new PrintStream(new FileOutputStream(args[0]));
+					 }
+		      else{
+			    output = System.out;
+			  }
+	
+	
+		System.out.print("Numar intevale:");
+		nrIntervale = Integer.parseInt(System.console().readLine());
+		
+		for(i=0; i<=nrIntervale; i++)
+		    {
+		      limitI = in_stream_char.readLine();
+		      limitS = in_stream_char.readLine();
+		      interv[i] = new Interval(Integer.parseInt(limitI), Integer.parseInt(limitS));
+		    }
+		
+		System.out.print("Numar fisiere: ");
+		nrFisiere = Integer.parseInt(System.console().readLine());
+		
+		
+		for(i=1; i<=nrFisiere; i++)
+		    {
+		      System.out.print("Nume fisier [" + i + "]: ");
+		      numefisier = System.console().readLine();
+		      BufferedReader numberReader = new BufferedReader( new InputStreamReader(new FileInputStream(numefisier)));
+	
+		      while( (linie = numberReader.readLine()) != null)
+			    {
+			      numere[j] = Double.parseDouble(linie);
+	                      j++;
+	                    }
+                    }
+      
+                for(i=0;i<j;i++)
+                   {
+	             System.out.println(numere[i]);
+	             interv[i].testarenr(numere[i]);
+                   }
+      
+	        in_stream_char.close();
+      
+               }catch(IOException e) {
+		  System.out.println("Eroare la operatiile de intrare-iesire");
+		  System.exit(1);
+				     }
+  }
+
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+	      

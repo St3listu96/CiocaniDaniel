@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;log&apos; to &apos;Log&apos;&#x0D;&#x0A;- Original project: &apos;LoginSystem&apos;&#x0D;&#x0A;- Original element: &apos;log&apos;&#x0D;&#x0A;- Renamed element: &apos;Log&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;log&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{log.java[log" matchStrategy="1" name="Log" qualified="false" references="true" similarDeclarations="false" stamp="1493754909002" textual="false" version="1.0"/>
+</session>
