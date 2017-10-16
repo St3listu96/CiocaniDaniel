@@ -18,7 +18,6 @@ int main(int nrArg, char *argument[]){
     int newFile;
     char string[100];
     
-
     if(nrArg<3){
         printf("Usage: %s file dir\n",argument[0]);
         exit(1);
