@@ -1,0 +1,49 @@
+abs(X,Y) :- Y is abs(X).
+
+fibonacci(0,1).
+fibonacci(1,1).
+fibonacci(N,F) :-
+    N>1,
+    Numar1 is N-1,
+    Numar2 is N-2,
+    fibonacci(Numar1,F_1),
+    fibonacci(Numar2,F_2),
+    F is F_1+F_2.
+
+gcd(X,0,X):- !.
+gcd(0,X,X):- !.
+
+gcd(X,Y,Z) :-
+	Y =\= 0,
+	K is X mod Y,
+	gcd(Y,K,Z),
+	!.
+
+gcd(X,Y,Z) :-
+	X>Y,
+	S is X-Y,
+	gcd(S,Y,Z),
+	!.
+
+gcd(X,Y,Z) :-
+	X<Y,
+	U is Y-X,
+	gcd(X,U,Z),
+	!.
+
+
+gcd(X,X,X) :- !.
+
+
+evaluating(X,X) :-  number(X).
+
+evaluating(E1+E2,Rez) :-
+	evaluating(E1,R1),
+	writef("E1=%d\n",[E1]),
+	evaluating(E2,R2),
+	plus(R1,R2,Rez).
+
+evaluating(E1-E2,Rez) :-
+	evaluating(E1,R1),
+	evaluating(E2,R2),
+	plus(R2,Rez,R1).
