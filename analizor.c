@@ -15,14 +15,14 @@ typedef struct _Token{
 		long int i;
 		double r;
 	};
-	int line;
+	
 	struct _Token *next;
 }Token;
+Token *tokens=NULL;
+Token *lastToken=NULL;
 
 Token *addToken(int code){
 	Token *tk;
-	Token *tokens=NULL;
-	Token *lastToken=NULL;
 	SAFEALLOC(tk,Token)
 	tk->code = code;
 	//tk->line = line;
@@ -56,7 +56,8 @@ int getNextToken(){
 	int line=1;
 	while(1){
 		ch=*caracter;
-		printf("#%d %c(%d)\n",stare,ch,ch);
+//printf("%d\n",stare);		
+		printf("%c(%d) #%d\n",ch,ch,stare);
 		switch(stare){
 			case 0: if(ch==','){
 					caracter++;
@@ -139,7 +140,7 @@ int getNextToken(){
 					stare=26;
 				}
 				else if(isalpha(ch)||ch=='_'){
-
+					startCh=caracter;
 					caracter++;
 					stare=29;
 				}
@@ -164,8 +165,8 @@ int getNextToken(){
 					stare=32;
 				}
 				else if(ch=='/'){
-                    caracter++;
-                    stare=53;
+                    			caracter++;
+                    			stare=53;
 				}
 
 				break;
@@ -285,16 +286,17 @@ int getNextToken(){
 				return GREATEREQ;
 				break;
 			case 29: if(isalnum(ch)||ch=='_'){
-						startCh=caracter;
 						caracter++;
 						stare=29;
 					}
 					else{
-						stare=30;
+					stare=30;
 					}
-					break;
+				break;
 
-			case 30: lungimeCuvant=caracter-startCh;
+			case 30:
+
+ 					lungimeCuvant=caracter-startCh;
 					if(lungimeCuvant==5 && !memcmp(startCh,"break",5))
 						tk=addToken(BREAK);
 					else if(lungimeCuvant==4 && !memcmp(startCh,"char",4))
@@ -318,7 +320,7 @@ int getNextToken(){
 					else if(lungimeCuvant==5 && !memcmp(startCh,"while",5))
 						tk=addToken(WHILE);
 					else{
-						addToken(ID);
+						tk=addToken(ID);
 						//tk->text = creezaString(startCh,caracter);
 					}
 					return tk->code;
@@ -478,7 +480,7 @@ int getNextToken(){
             case 56: if(ch=='*'){
                         caracter++;
                     }
-                    else if(ch!='*' || ch!='/'){
+                    else if(ch!='*' && ch!='/'){
                         caracter++;
                         stare=55;
                     }
@@ -488,14 +490,15 @@ int getNextToken(){
                     }
                     break;
 
-            case 57: if(ch!='\n' || ch!='\r' || ch!='\0'){
+            case 57: if(ch!='\n' && ch!='\r' && ch!='\0'){
                         caracter++;
                     }
                     else{
                         stare=0;
                     }
+			break;
 
-			default: printf("Stare inexistenta.\n");
+		default: printf("Stare inexistenta.\n");
                     exit(1);
 					break;
 
@@ -516,8 +519,10 @@ int main(){
 		exit(1);
 	}
 	n = fread(buffer,1,30000,fisier);
+	fclose(fisier);
 	buffer[n]='\0';
 	caracter=buffer;
+	puts(caracter);
 	while(getNextToken()!=END){
 
 
