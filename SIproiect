@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char instructiune[200];
+int contor=0;
+int operatie=0;
+float numar1=0;
+float numar2=0;
+
+void creeaza(char caracter){
+    if(caracter != '=')
+        instructiune[contor]=caracter;
+    else
+        instructiune[contor]='\0';
+}
+
+float compute(){
+
+    int i;
+    int aux;
+
+    for(i=0;i<strlen(instructiune);i++){
+
+        if(operatie==0){
+            if(instructiune[i]>='0'&&instructiune[i]<='9'){
+                aux = instructiune[i] - '0';
+                numar1 = (10*numar1) + aux;
+                continue;
+            }
+        }
+        else{
+            if(instructiune[i]>='0'&&instructiune[i]<='9'){
+                aux = instructiune[i] - '0';
+                numar2 = (10*numar2) + aux;
+                continue;
+            }
+        }
+
+        if(instructiune[i]=='+'){
+            operatie = 1;
+            continue;
+        }
+         if(instructiune[i]=='-'){
+            operatie = 2;
+            continue;
+        }
+         if(instructiune[i]=='*'){
+            operatie = 3;
+            continue;
+        }
+         if(instructiune[i]=='/'){
+            operatie = 4;
+            continue;
+        }
+    }
+
+    switch(operatie){
+    case 0:
+        return numar1;
+        break;
+    case 1:
+        return numar1+numar2;
+        break;
+    case 2:
+        return numar1-numar2;
+        break;
+    case 3:
+        return numar1*numar2;
+        break;
+    case 4:
+        return numar1/numar2;
+        break;
+    }
+    return numar1;
+}
+
+int main()
+{
+    int i;
+    char car;
+    while((car = getch())!='q'){
+        if(car == '='){
+            numar1=compute();
+            printf("\n%f\n",numar1);
+            for(i=0;i<strlen(instructiune);i++){
+                instructiune[i]='\0';
+            }
+
+            numar1=0;
+            contor=strlen(instructiune);
+            operatie=0;
+            instructiune[0]='\0';
+            continue;
+        }
+        creeaza(car);
+        contor++;
+        printf("%c",car);
+    }
+    return 0;
+}
