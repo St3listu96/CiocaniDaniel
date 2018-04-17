@@ -6,6 +6,7 @@
 #define SAFEALLOC(var,Type) if((var=(Type*)malloc(sizeof(Type)))==NULL)err("Memorie insuficienta");
 
 char *caracter;
+int line=1;
 enum{COMMA,SEMICOLON,LPAR,RPAR,LBRACKET,RBRACKET,LACC,RACC,ADD,SUB,MUL,DIV,DOT,AND,OR,NOT,NOTEQ,ASSIGN,EQUAL,LESS,LESSEQ,GREATER,GREATEREQ,CT_INT,CT_REAL,CT_STRING,CT_CHAR,END,BREAK,CHAR,DOUBLE,ELSE,FOR,IF,INT,RETURN,STRUCT,VOID,WHILE,ID};
 
 typedef struct _Token{
@@ -15,17 +16,18 @@ typedef struct _Token{
 		long int i;
 		double r;
 	};
-	
+    int line;
 	struct _Token *next;
 }Token;
+
 Token *tokens=NULL;
 Token *lastToken=NULL;
 
-Token *addToken(int code){
+Token *addToken(int code,int line){
 	Token *tk;
 	SAFEALLOC(tk,Token)
 	tk->code = code;
-	//tk->line = line;
+	tk->line = line;
 	tk->next = NULL;
 	if(lastToken){
 		lastToken->next=tk;
@@ -46,6 +48,30 @@ void err(const char *text,...){
 	va_end(va);
 	exit(-1);
 }
+
+void listeazaAtomii()
+{
+	Token *tk;
+	for (tk = tokens; tk != NULL; tk = tk->next)
+	{
+		printf("---%d---", tk->code);
+		printf("\n");
+	}
+}
+
+char *creeazaString(char *inceput,char *sfarsit){
+    int i;
+    int length;
+    char *text;
+    length= sfarsit-inceput;
+    text = (char *)malloc(length * sizeof(char));
+    for(i=0;i<length;i++){
+        *(text+i) = *(inceput+i);
+    }
+    *(text+length) ='\0';
+    return text;
+}
+
 int getNextToken(){
 
 	int stare=0;
@@ -53,11 +79,12 @@ int getNextToken(){
 	char ch;
 	const char *startCh;
 	Token *tk;
-	int line=1;
 	while(1){
 		ch=*caracter;
-//printf("%d\n",stare);		
 		printf("%c(%d) #%d\n",ch,ch,stare);
+		 if(ch == '\n'){
+                line++;
+        }
 		switch(stare){
 			case 0: if(ch==','){
 					caracter++;
@@ -146,11 +173,10 @@ int getNextToken(){
 				}
 
 				else if(ch=='\n'){
-					line++;
 					caracter++;
 				}
 				else if(ch==0){
-					addToken(END);
+					addToken(END,line);
 					return END;
 				}
 				else if(ch==' '||ch=='\r'||ch=='\t'){
@@ -164,48 +190,52 @@ int getNextToken(){
 					caracter++;
 					stare=32;
 				}
+				else if(ch=='"'){
+                    caracter++;
+                    stare=45;
+				}
 				else if(ch=='/'){
-                    			caracter++;
-                    			stare=53;
+                    caracter++;
+                    stare=53;
 				}
 
 				break;
 
 
-			case 1:	addToken(COMMA);
+			case 1:	addToken(COMMA,line);
 				return COMMA;
 				break;
-			case 2: addToken(SEMICOLON);
+			case 2: addToken(SEMICOLON,line);
 				return SEMICOLON;
 				break;
-			case 3:	addToken(LPAR);
+			case 3:	addToken(LPAR,line);
 				return LPAR;
 				break;
-			case 4:	addToken(RPAR);
+			case 4:	addToken(RPAR,line);
 				return RPAR;
 				break;
-			case 5:	addToken(LBRACKET);
+			case 5:	addToken(LBRACKET,line);
 				return LBRACKET;
 				break;
-			case 6:	addToken(RBRACKET);
+			case 6:	addToken(RBRACKET,line);
 				return RBRACKET;
 				break;
-			case 7:	addToken(LACC);
+			case 7:	addToken(LACC,line);
 				return LACC;
 				break;
-			case 8:	addToken(RACC);
+			case 8:	addToken(RACC,line);
 				return RACC;
 				break;
-			case 9:	addToken(ADD);
+			case 9:	addToken(ADD,line);
 				return ADD;
 				break;
-			case 10:addToken(SUB);
+			case 10:addToken(SUB,line);
 				return SUB;
 				break;
-			case 11:addToken(MUL);
+			case 11:addToken(MUL,line);
 				return MUL;
 				break;
-			case 12:addToken(DOT);
+			case 12:addToken(DOT,line);
 				return DOT;
 				break;
 			case 13: if(ch=='&'){
@@ -213,7 +243,7 @@ int getNextToken(){
 					caracter++;
 				}
 				break;
-			case 14:addToken(AND);
+			case 14:addToken(AND,line);
 				return AND;
 				break;
 			case 15: if(ch=='|'){
@@ -222,7 +252,7 @@ int getNextToken(){
 					stare=16;
 				}
 				break;
-			case 16:addToken(OR);
+			case 16:addToken(OR,line);
 				return OR;
 				break;
 			case 17: if(ch=='='){
@@ -234,10 +264,10 @@ int getNextToken(){
 					stare=18;
 				}
 				break;
-			case 18:addToken(NOT);
+			case 18:addToken(NOT,line);
 				return NOT;
 				break;
-			case 19:addToken(NOTEQ);
+			case 19:addToken(NOTEQ,line);
 				return NOTEQ;
 				break;
 			case 20: if(ch=='='){
@@ -249,10 +279,10 @@ int getNextToken(){
 					stare=21;
 				}
 				break;
-			case 21:addToken(ASSIGN);
+			case 21:addToken(ASSIGN,line);
 				return ASSIGN;
 				break;
-			case 22:addToken(EQUAL);
+			case 22:addToken(EQUAL,line);
 				return EQUAL;
 				break;
 			case 23: if(ch=='='){
@@ -264,10 +294,10 @@ int getNextToken(){
 					stare=24;
 				}
 				break;
-			case 24:addToken(LESS);
+			case 24:addToken(LESS,line);
 				return LESS;
 				break;
-			case 25:addToken(LESSEQ);
+			case 25:addToken(LESSEQ,line);
 				return LESSEQ;
 				break;
 			case 26: if(ch=='='){
@@ -279,10 +309,10 @@ int getNextToken(){
 					stare=27;
 				}
 				break;
-			case 27:addToken(GREATER);
+			case 27:addToken(GREATER,line);
 				return GREATER;
 				break;
-			case 28:addToken(GREATEREQ);
+			case 28:addToken(GREATEREQ,line);
 				return GREATEREQ;
 				break;
 			case 29: if(isalnum(ch)||ch=='_'){
@@ -298,30 +328,30 @@ int getNextToken(){
 
  					lungimeCuvant=caracter-startCh;
 					if(lungimeCuvant==5 && !memcmp(startCh,"break",5))
-						tk=addToken(BREAK);
+						tk=addToken(BREAK,line);
 					else if(lungimeCuvant==4 && !memcmp(startCh,"char",4))
-						tk=addToken(CHAR);
+						tk=addToken(CHAR,line);
 					else if(lungimeCuvant==6 && !memcmp(startCh,"double",6))
-						tk=addToken(DOUBLE);
+						tk=addToken(DOUBLE,line);
 					else if(lungimeCuvant==4 && !memcmp(startCh,"else",4))
-						tk=addToken(ELSE);
+						tk=addToken(ELSE,line);
 					else if(lungimeCuvant==3 && !memcmp(startCh,"for",3))
-						tk=addToken(FOR);
+						tk=addToken(FOR,line);
 					else if(lungimeCuvant==2 && !memcmp(startCh,"if",2))
-						tk=addToken(IF);
+						tk=addToken(IF,line);
 					else if(lungimeCuvant==3 && !memcmp(startCh,"int",3))
-						tk=addToken(INT);
+						tk=addToken(INT,line);
 					else if(lungimeCuvant==6 && !memcmp(startCh,"return",6))
-						tk=addToken(RETURN);
+						tk=addToken(RETURN,line);
 					else if(lungimeCuvant==6 && !memcmp(startCh,"struct",6))
-						tk=addToken(STRUCT);
+						tk=addToken(STRUCT,line);
 					else if(lungimeCuvant==4 && !memcmp(startCh,"void",4))
-						tk=addToken(VOID);
+						tk=addToken(VOID,line);
 					else if(lungimeCuvant==5 && !memcmp(startCh,"while",5))
-						tk=addToken(WHILE);
+						tk=addToken(WHILE,line);
 					else{
-						tk=addToken(ID);
-						//tk->text = creezaString(startCh,caracter);
+						tk=addToken(ID,line);
+						tk->text = creeazaString(startCh,caracter);
 					}
 					return tk->code;
 					break;
@@ -388,7 +418,7 @@ int getNextToken(){
 					}
 					break;
 
-			case 36: addToken(CT_INT);
+			case 36: addToken(CT_INT,line);
 					return CT_INT;
 					break;
 
@@ -420,6 +450,9 @@ int getNextToken(){
 						caracter++;
 						stare=41;
 					}
+					else{
+                        stare=44;
+					}
 					break;
 
 			case 41: if(ch=='+' || ch=='-'){
@@ -446,9 +479,11 @@ int getNextToken(){
 					}
 					break;
 
-			case 44: addToken(CT_REAL);
+			case 44: addToken(CT_REAL,line);
 					return CT_REAL;
 					break;
+
+            //case 45:
 
 
             case 53: if(ch=='*'){
@@ -464,7 +499,7 @@ int getNextToken(){
                     }
                     break;
 
-            case 54: addToken(DIV);
+            case 54: addToken(DIV,line);
                     return DIV;
                     break;
 
@@ -522,12 +557,11 @@ int main(){
 	fclose(fisier);
 	buffer[n]='\0';
 	caracter=buffer;
-	puts(caracter);
 	while(getNextToken()!=END){
 
 
 	}
-
+    listeazaAtomii();
 
 	return 0;
 }
