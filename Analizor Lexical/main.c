@@ -49,106 +49,208 @@ void err(const char *text,...){
 	exit(-1);
 }
 
+void indentare(int level){
+    int i;
+    for(i=0;i<level;i++){
+        putchar('\t');
+    }
+}
+
+int numarCifre(int numar) {
+    if (numar < 10){
+        return 1;
+    }
+    return 1 + numarCifre(numar / 10);
+}
+
 void listeazaAtomii(){
 	Token *tk;
+	int level;
 	for (tk = tokens; tk != NULL; tk = tk->next)
 	{
+
+	    if(numarCifre(tk->line)>1)
+                    level = 1;
+                else
+                    level = 2;
+
 	    switch(tk->code){
 
-        case ID: printf("Line %d:\t\t\tID: %s\n",tk->line,tk->text);
+        case ID: printf("Line %d:",tk->line);
+                 indentare(level);
+                 printf("ID: %s\n",tk->text);
                  break;
-        case BREAK: printf("Line %d:\t\t\tID: BREAK\n",tk->line);
+        case BREAK: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: break\n");
+                    break;
+        case CHAR: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: char\n");
+                    break;
+        case DOUBLE: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: double\n");
+                    break;
+        case ELSE: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: else\n");
+                    break;
+        case FOR: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: for\n");
+                    break;
+        case IF: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: if\n");
+                    break;
+        case INT: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: int\n");
+                    break;
+        case RETURN: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: return\n");
+                    break;
+        case STRUCT: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: struct\n");
+                    break;
+        case VOID: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: void\n");
+                    break;
+        case WHILE: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ID: while\n");
+                    break;
+        case COMMA: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("COMMA\n");
+                    break;
+        case SEMICOLON: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("SEMICOLON\n");
+                    break;
+        case LPAR: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("LPAR\n");
+                    break;
+        case RPAR: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("RPAR\n");
+                    break;
+        case LBRACKET: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("LBRACKET\n");
+                    break;
+        case RBRACKET: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("RBRACKET\n");
+                    break;
+        case LACC: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("LACC\n");
+                    break;
+        case RACC: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("RACC\n");
+                    break;
+        case ADD: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ADD\n");
+                    break;
+        case SUB: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("SUB\n");
+                    break;
+        case MUL: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("MUL\n");
+                    break;
+        case DIV: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("DIV\n");
+                    break;
+        case DOT: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("DOT\n");
+                    break;
+        case AND: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("AND\n");
+                    break;
+        case OR: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("OR\n");
+                    break;
+        case NOT: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("NOT\n");
+                    break;
+        case ASSIGN: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("ASSIGN\n");
+                    break;
+        case EQUAL: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("EQUAL\n");
+                    break;
+        case NOTEQ: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("NOTEQ\n");
+                    break;
+        case LESS: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("LESS\n");
+                    break;
+        case LESSEQ: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("LESSEQ\n");
+                    break;
+        case GREATER: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("GREATER\n");
+                    break;
+        case GREATEREQ: printf("Line %d:",tk->line);
+                    indentare(level);
+                    printf("GREATEREQ\n");
+                    break;
+        case CT_INT: printf("Line %d:",tk->line);
+                 indentare(level);
+                 printf("CT_INT: %d\n",tk->i);
                  break;
-        case CHAR: printf("Line %d:\t\t\tID: CHAR\n",tk->line);
+        case CT_REAL: printf("Line %d:",tk->line);
+                 indentare(level);
+                 printf("CT_REAL: %f\n",tk->r);
                  break;
-        case DOUBLE: printf("Line %d:\t\t\tID: DOUBLE\n",tk->line);
+        case CT_STRING: printf("Line %d:",tk->line);
+                 indentare(level);
+                 printf("CT_STRING: %s\n",tk->text);
                  break;
-        case ELSE: printf("Line %d:\t\t\tID: ELSE\n",tk->line);
+        case CT_CHAR: printf("Line %d:",tk->line);
+                 indentare(level);
+                 printf("CT_CHAR: %s\n",tk->text);
                  break;
-        case FOR: printf("Line %d:\t\t\tID: FOR\n",tk->line);
+        case END: printf("Line %d:",tk->line);
+                 indentare(level);
+                 printf("END\n");
                  break;
-        case IF: printf("Line %d:\t\t\tID: IF\n",tk->line);
-                 break;
-        case INT: printf("Line %d:\t\t\tID: INT\n",tk->line);
-                 break;
-        case RETURN: printf("Line %d:\t\t\tID: RETURN\n",tk->line);
-                 break;
-        case STRUCT: printf("Line %d:\t\t\tID: STRUCT\n",tk->line);
-                 break;
-        case VOID: printf("Line %d:\t\t\tID: VOID\n",tk->line);
-                 break;
-        case WHILE: printf("Line %d:\t\t\tID: WHILE\n",tk->line);
-                 break;
-        case COMMA: printf("Line %d:\t\t\tCOMMA\n",tk->line);
-                    break;
-        case SEMICOLON: printf("Line %d:\t\t\tSEMICOLON\n",tk->line);
-                    break;
-        case LPAR: printf("Line %d:\t\t\tLPAR\n",tk->line);
-                    break;
-        case RPAR: printf("Line %d:\t\t\tRPAR\n",tk->line);
-                    break;
-        case LBRACKET: printf("Line %d:\t\t\tLBRACKET\n",tk->line);
-                    break;
-        case RBRACKET: printf("Line %d:\t\t\tRBRACKET\n",tk->line);
-                    break;
-        case LACC: printf("Line %d:\t\t\tLACC\n",tk->line);
-                    break;
-        case RACC: printf("Line %d:\t\t\tRACC\n",tk->line);
-                    break;
-        case ADD: printf("Line %d:\t\t\tADD\n",tk->line);
-                    break;
-        case SUB: printf("Line %d:\t\t\tSUB\n",tk->line);
-                    break;
-        case MUL: printf("Line %d:\t\t\tMUL\n",tk->line);
-                    break;
-        case DIV: printf("Line %d:\t\t\tDIV\n",tk->line);
-                    break;
-        case DOT: printf("Line %d:\t\t\tDOT\n",tk->line);
-                    break;
-        case AND: printf("Line %d:\t\t\tAND\n",tk->line);
-                    break;
-        case OR: printf("Line %d:\t\t\tOR\n",tk->line);
-                    break;
-        case NOT: printf("Line %d:\t\t\tNOT\n",tk->line);
-                    break;
-        case ASSIGN: printf("Line %d:\t\t\tASSIGN\n",tk->line);
-                    break;
-        case EQUAL: printf("Line %d:\t\t\tEQUAL\n",tk->line);
-                    break;
-        case NOTEQ: printf("Line %d:\t\t\tNOTEQ\n",tk->line);
-                    break;
-        case LESS: printf("Line %d:\t\t\tLESS\n",tk->line);
-                    break;
-        case LESSEQ: printf("Line %d:\t\t\tLESSEQ\n",tk->line);
-                    break;
-        case GREATER: printf("Line %d:\t\t\tGREATER\n",tk->line);
-                    break;
-        case GREATEREQ: printf("Line %d:\t\t\tGREATEREQ\n",tk->line);
-                    break;
-        case CT_INT: printf("Line %d:\t\t\tCT_INT:%d\n",tk->line,tk->i);
-                    break;
-        case CT_REAL: printf("Line %d:\t\t\tCT_INT:%f\n",tk->line,tk->r);
-                    break;
-        case CT_STRING: printf("Line %d:\t\t\tCT_STRING:%s\n",tk->line,tk->text);
-                    break;
-        case CT_CHAR: printf("Line %d:\t\t\tCT_CHAR:%s\n",tk->line,tk->text);
-                    break;
-        case END: printf("Line %d:\t\t\tID: END\n",tk->line);
-                    break;
 	    }
 	}
 }
 
 char *creeazaString(const char *start, int lungime){
 	int i;
-	char *text, *aux;
+	char *text;
+	char *aux;
 	char c;
 	int poz = 0;
 	text = (char *)malloc(lungime * sizeof(char));
-	if (text == NULL)
-		err(text, "");
-	for (i = 0; i < lungime; i++)
+	for (i = 0; i < lungime; i++){
 		*(text + i) = *(start + i);
+    }
+
 	*(text + lungime) = '\0';
 	aux = text;
 	c = *aux;
