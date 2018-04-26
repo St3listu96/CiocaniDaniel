@@ -97,6 +97,7 @@ int unit(){
 }
 
 int stm(){
+    Token *initToken=crtTk;
 	if(stmCompound()){
 
 	}
@@ -117,7 +118,92 @@ int stm(){
 			}
 		}		
 	}
+	else if(consume(WHILE)){
+        if(consume(LPAR)){
+            if(expr()){
+                if(consume(RPAR)){
+                    if(stm()){
+                        return 1;
+                    }
+                }
+            }
+        }
+    }
+    else if(consume(FOR)){
+        if(consume(LPAR)){
+            if(expr()){
+                
+            }
+            if(consume(SEMICOLON)){
+                if(expr()){
+                    
+                }
+                if(consume(SEMICOLON)){
+                    if(expr()){
+                        
+                    }
+                    if(consume(RPAR)){
+                        if(stm()){
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(consume(BREAK)){
+        if(consume(SEMICOLON)){
+            return 1;
+        }
+    }
+    else if(consume(RETURN)){
+        if(expr()){
+            
+        }
+        if(consume(SEMICOLON)){
+            return 1;
+        }
+    }
+    else if(expr()){
+        if(consume(SEMICOLON)){
+            return 1;
+        }
+    }
+    else if(consume(SEMICOLON)){
+        return 1;
+    }
+crtTk=initToken;
+return 0;
 }
+
+int declVar(){
+    if(typeBase()){
+        if(consume(ID)){
+            if(arrayDecl()){
+                
+            }
+            while(1){
+                if(consume(COMMA)){
+                    if(consume(ID)){
+                        if(arrayDecl()){
+                            
+                        }
+                        continue;
+                    }
+                }
+                break;
+            }
+            if(consume(SEMICOLON)){
+                return 1;
+            }
+        }
+    }
+    
+    
+    
+}
+
+
 
 int main(){
 
