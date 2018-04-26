@@ -82,47 +82,47 @@ void listeazaAtomii(){
                  break;
         case BREAK: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: break\n");
+                    printf("break\n");
                     break;
         case CHAR: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: char\n");
+                    printf("char\n");
                     break;
         case DOUBLE: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: double\n");
+                    printf("double\n");
                     break;
         case ELSE: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: else\n");
+                    printf("else\n");
                     break;
         case FOR: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: for\n");
+                    printf("for\n");
                     break;
         case IF: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: if\n");
+                    printf("if\n");
                     break;
         case INT: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: int\n");
+                    printf("int\n");
                     break;
         case RETURN: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: return\n");
+                    printf("return\n");
                     break;
         case STRUCT: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: struct\n");
+                    printf("struct\n");
                     break;
         case VOID: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: void\n");
+                    printf("void\n");
                     break;
         case WHILE: printf("Line %d:",tk->line);
                     indentare(level);
-                    printf("ID: while\n");
+                    printf("while\n");
                     break;
         case COMMA: printf("Line %d:",tk->line);
                     indentare(level);
@@ -246,7 +246,7 @@ char *creeazaString(const char *start, int lungime){
 	char *aux;
 	char c;
 	int poz = 0;
-	text = (char *)malloc(lungime * sizeof(char));
+	text = (char *)malloc((lungime+1) * sizeof(char));
 	for (i = 0; i < lungime; i++){
 		*(text + i) = *(start + i);
     }
@@ -264,77 +264,77 @@ char *creeazaString(const char *start, int lungime){
 			if (c == 'n')
 			{
 				*(text + poz - 1) = '\n';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == 't')
 			{
 				*(text + poz - 1) = '\t';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == 'r')
 			{
 				*(text + poz - 1) = '\r';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == '0')
 			{
 				*(text + poz - 1) = '\0';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == 'a')
 			{
 				*(text + poz - 1) = '\a';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == 'b')
 			{
 				*(text + poz - 1) = '\b';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == 'f')
 			{
 				*(text + poz - 1) = '\f';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == 'r')
 			{
 				*(text + poz - 1) = '\r';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == '\\')
 			{
 				*(text + poz - 1) = '\\';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == '\?')
 			{
 				*(text + poz - 1) = '\?';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
 			else if (c == '\"')
 			{
 				*(text + poz - 1) = '\"';
-				strcpy(aux, aux + 1);
+				memmove(aux, aux + 1,strlen(aux));
 				aux--;
 				poz--;
 			}
@@ -356,7 +356,7 @@ int getNextToken(){
 	Token *tk;
 	while(1){
 		ch=*caracter;
-		printf("%c(%d) #%d\n",ch,ch,stare);
+		//printf("%c(%d) #%d\n",ch,ch,stare);
 		switch(stare){
 			case 0: if(ch==','){
 					caracter++;
@@ -864,7 +864,7 @@ int getNextToken(){
 	}
 }
 int main(){
-	char buffer[300001];
+	char buffer[30001];
 	int n;
 	FILE *fisier;
 	fisier = fopen("8.c","r");
@@ -872,13 +872,14 @@ int main(){
 		printf("Eroare deschidere fisier.\n");
 		exit(1);
 	}
-	n = fread(buffer,1,300000,fisier);
+	n = fread(buffer,1,30000,fisier);
 	fclose(fisier);
 	buffer[n]='\0';
 	caracter=buffer;
 	while(getNextToken()!=END){
+
 	}
-        printf("\n\n");
+
     	listeazaAtomii();
 	return 0;
 }
