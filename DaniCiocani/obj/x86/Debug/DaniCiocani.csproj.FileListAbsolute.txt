@@ -1,0 +1,8 @@
+D:\SDA_IS\DaniCiocani\bin\Debug\DaniCiocani.exe
+D:\SDA_IS\DaniCiocani\bin\Debug\DaniCiocani.pdb
+D:\SDA_IS\DaniCiocani\obj\x86\Debug\DaniCiocani.Properties.Resources.resources
+D:\SDA_IS\DaniCiocani\obj\x86\Debug\DaniCiocani.csproj.GenerateResource.Cache
+D:\SDA_IS\DaniCiocani\obj\x86\Debug\DaniCiocani.exe
+D:\SDA_IS\DaniCiocani\obj\x86\Debug\DaniCiocani.pdb
+D:\SDA_IS\DaniCiocani\obj\x86\Debug\DaniCiocani.Form1.resources
+D:\SDA_IS\DaniCiocani\obj\x86\Debug\DaniCiocani.csprojResolveAssemblyReference.cache
