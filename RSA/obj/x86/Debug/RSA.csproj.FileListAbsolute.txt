@@ -1,0 +1,7 @@
+D:\SDA_IS\Kill me\RSA\bin\Debug\RSA.exe
+D:\SDA_IS\Kill me\RSA\bin\Debug\RSA.pdb
+D:\SDA_IS\Kill me\RSA\obj\x86\Debug\RSA.Form1.resources
+D:\SDA_IS\Kill me\RSA\obj\x86\Debug\RSA.Properties.Resources.resources
+D:\SDA_IS\Kill me\RSA\obj\x86\Debug\RSA.csproj.GenerateResource.Cache
+D:\SDA_IS\Kill me\RSA\obj\x86\Debug\RSA.exe
+D:\SDA_IS\Kill me\RSA\obj\x86\Debug\RSA.pdb
