@@ -1,0 +1,90 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication23;
+
+import java.math.BigInteger;
+/**
+ *
+ * @author student
+ */
+public class JavaApplication23 {
+
+    
+    
+    /**
+     * @param args the command line arguments
+     */
+    
+    
+    public static BigInteger SquareRoot(BigInteger x) {
+    BigInteger div = BigInteger.ZERO.setBit(x.bitLength()/2);
+    BigInteger div2 = div;
+    // Loop until we hit the same value twice in a row, or wind
+    // up alternating.
+    for(;;) {
+        BigInteger y = div.add(x.divide(div)).shiftRight(1);
+        if (y.equals(div) || y.equals(div2))
+            return y;
+        div2 = div;
+        div = y;
+    }
+}
+    
+    
+    public static void main(String[] args) {
+        BigInteger n = new BigInteger("837210799");
+        BigInteger e1 = new BigInteger("7");
+        BigInteger d1 = new BigInteger("478341751");
+        BigInteger e2 = new BigInteger("17");
+        BigInteger k;
+        BigInteger s;
+        BigInteger delta;
+        BigInteger x1;
+        BigInteger x2;
+        BigInteger d2;
+        BigInteger fi;
+        
+        
+        k = d1.multiply(e1);
+        k = k.subtract(new BigInteger("1"));
+        k = (k.divide(n));
+        k = k.add(new BigInteger("1"));
+        //System.out.println(k);
+        
+        s = n.add(new BigInteger("1"));
+        s = s.multiply(k);
+        s = s.add(new BigInteger("1"));
+        s = (s.subtract(d1.multiply(e1))).divide(k);
+        
+        //System.out.println(s);
+        
+        
+        
+        delta = s.multiply(s);
+        delta = delta.subtract(n.multiply(new BigInteger("4")));
+        
+        //System.out.println(delta);
+        
+        x1 = s.add(SquareRoot(delta)).divide(new BigInteger("2"));
+        x2 = s.subtract(SquareRoot(delta)).divide(new BigInteger("2"));
+        
+        //System.out.println(x1);
+        //System.out.println(x2);
+        
+        
+        fi = x1.subtract(new BigInteger("1")).multiply(x2.subtract(new BigInteger("1")));
+        d2 = e2.modInverse(fi);
+        
+        System.out.println(d2);
+        
+        
+        
+        
+        
+        
+    }
+    
+}
